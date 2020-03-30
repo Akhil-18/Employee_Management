@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="text-align: center; color:crimson;">List of employees</h2>
+    <button onclick="window.location.href = '/v1/newemployee'">Add Employee</button>
+    <table>
+        <tr>
+            <th>Employee Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Job Title</th>
+            <th>Reports to</th>
+            <th>Extension</th>
+            <th>Email</th>
+            <th>Office Code</th>
+        </tr>
+        <% for(i=0;i<data.length;i++){ %>
+        <tr>
+            <td><%= data[i].employeeNumber %></td>
+            <td><%= data[i].firstName %></td>
+            <td><%= data[i].lastName %></td>
+            <td><%= data[i].jobTitle %></td>
+            <td><%= data[i].reportsTo %></td>
+            <td><%= data[i].extension %></td>
+            <td><%= data[i].email %></td>
+            <td><%= data[i].officeCode %></td>
+        </tr>
+        <%}%>
+    </table>
+</body>
+</html>
