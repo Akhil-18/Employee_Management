@@ -1,28 +1,29 @@
 const express = require('express');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
-var swaggerUi = require('swagger-ui-express'),
-swaggerDocument = require('./swagger.json');
+const app = express();
+const mysql = require('mysql'); // my sql import
 
-
+const bodyParser = require('body-parser');  // body parser
 var jsonParser = bodyParser.json();
 var urlEncodedParser = bodyParser.urlencoded({extended : false});
 
-const app = express();
+var swaggerUi = require('swagger-ui-express'); // swagger
+swaggerDocument = require('./swagger.json');
 
+// setting the app-engine
 app.set('view engine','ejs');
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Mysqlserver',
+    host: 'mydbinstance.clzn4dnktzfg.us-east-1.rds.amazonaws.com',
+    user: 'admin',
+    password: 'mydbinstance',
     database: 'classicmodels'
   });
-  
+
 connection.connect((err) => {
     if (err) throw err;
     console.log('Connected!');
   });
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // app.get('/',function(req,res){
