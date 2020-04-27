@@ -2,10 +2,10 @@
     "swagger": "2.0",
     "info": {
       "version": "1.0.0",
-      "title": "Yet Another Node.js Blogg Application API",
-      "description": "Yet Another Node.js Blogg Application API",
+      "title": "Employee Database Application API",
+      "description": "Find how to use the Application API",
       "license": {
-        "name": "MIT",
+        "name": "Akhil",
         "url": "https://opensource.org/licenses/MIT"
       }
     },
@@ -13,8 +13,8 @@
     "basePath": "/api/v1",
     "tags": [
       {
-        "name": "Users",
-        "description": "API for users in the system"
+        "name": "Employees",
+        "description": "API for employee in the system"
       }
     ],
     "schemes": [
@@ -27,19 +27,19 @@
       "application/json"
     ],
     "paths": {
-      "/users": {
+      "/employee": {
         "post": {
           "tags": [
-            "Users"
+            "Employees"
           ],
-          "description": "Create new user in system",
+          "description": "Create new employee in system",
           "parameters": [
             {
-              "name": "user",
+              "name": "employee",
               "in": "body",
-              "description": "User that we want to create",
+              "description": "Employee that we want to create",
               "schema": {
-                "$ref": "#/definitions/User"
+                "$ref": "#/definitions/Employee"
               }
             }
           ],
@@ -48,86 +48,110 @@
           ],
           "responses": {
             "200": {
-              "description": "New user is created",
+              "description": "Record added to the database succesfully",
               "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "Get all users in system",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Users"
-              }
-            }
-          }
-        }
-      },
-      "/users/{userId}": {
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "description": "ID of user that we want to find",
-            "type": "string"
-          }
-        ],
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "Get user with given ID",
-          "responses": {
-            "200": {
-              "description": "User is found",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete user with given ID",
-          "tags": [
-            "Users"
-          ],
-          "responses": {
-            "200": {
-              "description": "User is deleted",
-              "schema": {
-                "$ref": "#/definitions/User"
+                "$ref": "#/definitions/Employee"
               }
             }
           }
         },
         "put": {
-          "summary": "Update user with give ID",
+          "summary": "Update employee with give ID",
           "tags": [
-            "Users"
+            "Employees"
           ],
           "parameters": [
             {
-              "name": "user",
+              "name": "employee",
               "in": "body",
-              "description": "User with new values of properties",
+              "description": "Employee with new values of properties",
               "schema": {
-                "$ref": "#/definitions/User"
+                "$ref": "#/definitions/Employee"
               }
             }
           ],
           "responses": {
             "200": {
-              "description": "User is updated",
+              "description": "Employee is updated",
               "schema": {
-                "$ref": "#/definitions/User"
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          }
+        },
+        "patch": {
+          "summary": "Update few properties of the employee with give ID",
+          "tags": [
+            "Employees"
+          ],
+          "parameters": [
+            {
+              "name": "employee",
+              "in": "body",
+              "description": "Employee with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/EmployeePatch"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Employee is updated",
+              "schema": {
+                "$ref": "#/definitions/EmployeePatch"
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "summary": "Get all employees in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          }
+        }
+      },
+      "/employee/{emp_id}": {
+        "parameters": [
+          {
+            "name": "emp_id",
+            "in": "path",
+            "required": true,
+            "description": "ID of employee that we want to find",
+            "type": "integer"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Employees"
+          ],
+          "summary": "Get employee with given ID",
+          "responses": {
+            "200": {
+              "description": "Employee found",
+              "schema": {
+                "$ref": "#/definitions/Employee"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete employee with given ID",
+          "tags": [
+            "Employees"
+          ],
+          "responses": {
+            "200": {
+              "description": "Record deleted succesfully",
+              "schema": {
+                "$ref": "#/definitions/Employee"
               }
             }
           }
@@ -135,15 +159,18 @@
       }
     },
     "definitions": {
-      "User": {
+      "Employee": {
         "required": [
-          "email",
-          "_id"
+          "emp_no",
+          "email"
         ],
         "properties": {
-          "_id": {
-            "type": "string",
+          "emp_no": {
+            "type": "integer",
             "uniqueItems": true
+          },
+          "extension":{
+            "type":"string"
           },
           "email": {
             "type": "string",
@@ -154,12 +181,37 @@
           },
           "firstName": {
             "type": "string"
+          },
+          "officeCode":{
+            "type":"string",
+            "description":"use from 1,2,3 office codes"
+          },
+          "reportTo":{
+            "type":"integer",
+            "description":"use from 1088,1002,1143,1056,1621"
+          },
+          "jobTitle":{
+             "type":"string"
           }
         }
       },
-      "Users": {
-        "type": "array",
-        "$ref": "#/definitions/User"
+      "EmployeePatch": {
+        "required": [
+          "emp_no"
+        ],
+        "properties": {
+          "emp_no": {
+            "type": "integer",
+            "uniqueItems": true
+          },
+          "reportTo":{
+            "type":"integer",
+            "description":"use from 1088,1002,1143,1056,1621"
+          },
+          "jobTitle":{
+             "type":"string"
+          }
+        }
       }
     }
   }

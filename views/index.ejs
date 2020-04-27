@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../assets/stylesheets/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <%=data%>
+    <%- include('./partials/header.ejs') %>
+      <%- include('./partials/nav.ejs') %>
+      <h1>Hello! Welcome to this website</h1>
+      
+      <%- include('./partials/footer.ejs')%>
 </body>
 </html>

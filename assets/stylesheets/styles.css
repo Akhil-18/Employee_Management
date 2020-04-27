@@ -1,0 +1,194 @@
+body{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color:#333;
+    padding:5px;
+ }
+
+ article,aside,footer,header,main,section{
+    display: block;
+}
+
+header{
+    position: fixed;
+    left:0px;
+    top: 0px;
+    height: 125px;
+    width: 100%;
+    background: #0099ff;
+}
+
+.categories{
+  color:#ff0066;
+}
+
+/* h1{
+    float: left;
+} */
+
+.branding{
+    height: 100px;
+    width: 150px;
+    padding: 12px;
+}
+
+.event-image{
+    width: 200px;
+    height: 200px;
+}
+
+.text-align{
+    text-align: center;
+    color:black;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 0px;
+  }
+
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+.hostImage{
+    height: 100px;
+    width: 125px;
+    padding: 5px;
+}
+
+.navbar{
+    float:right;
+    padding: 10px;
+}
+
+.text-color{
+    color:#009900;
+    text-align: center;
+}
+
+.navbar-text{
+    float:right;
+    padding: 5px;
+}
+
+.menubar{
+    float: left;
+    left: 0px;
+    position: fixed;
+    top: 125px;
+    height: 40px;
+    width: 100%;
+    background :#000000;
+    padding-top: 15px;
+}
+
+.menu{
+    color:white;
+    padding: 5px;
+}
+
+nav a {
+    color:white;
+}
+
+main{
+    margin-top: 165px;
+    color: black;
+    float: left;
+    background: #FFFFFF;
+    width: 100%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  aside{
+      float:right;
+      margin-right: 10%;
+  }
+
+footer{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background-color: #0099ff;
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#imageLogo{
+  float:left;
+}
+
+#LogoText{
+  text-align: center;
+  margin-top: 30px;
+}
+#LogoText h1{
+  width:80%;
+  font-style: italic;
+font-family: sans-serif;
+}
+
+#mainContent{
+  text-align: center;
+}
+
+#mainContent p{
+  font-style: oblique;
+font-family: monospace;
+font-size: 20px;
+}
+
+.row{
+  text-align: center;
+}
+
+.default{
+    font-size: 16px;
+    padding: 10px 10px;
+    color:white;
+}
+.green{
+  background-color: green;
+}
+
+.blue{
+  background-color: #ff8533;
+}
+
+.red{
+  background-color: #e60000;
+}
+
+.white{
+  color: white;
+  text-decoration: none;
+}
+
+#UserName{
+  float: right !important;
+padding-right: 20px;
+
+}
