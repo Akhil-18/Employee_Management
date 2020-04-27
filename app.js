@@ -18,6 +18,6 @@ app.use('/api/v1', employeeApi);
 app.use('/',routes);
 
 // starting the app
-app.listen(5000, function () {
-    console.log('app started and listening on port 5000');
+app.listen(3000, function () {
+    console.log('app started and listening on port 3000');
 })

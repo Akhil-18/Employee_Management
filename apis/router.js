@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');  // body parser
 var jsonParser = bodyParser.json();
 var urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const fetch = require('node-fetch');
-const env = "http://161.35.10.78";
+const env = "161.35.10.78";
 
 router.get('/',function(req,res){
     res.render('index');
 })
 
 router.get('/employee', function (req, res) {
-    fetch(`http://${env}:5000/api/v1/employee`).then(res => res.json()).then(json => {
+    fetch(`http://${env}:3000/api/v1/employee`).then(res => res.json()).then(json => {
         //  console.log(json);
         //  res.send(json);
         res.render('employee', { data: json });
@@ -19,7 +19,7 @@ router.get('/employee', function (req, res) {
 })
 
 router.get('/employee/:id', function (req, res) {
-    fetch(`http://${env}:5000/api/v1/employee/${req.params.id}`).then(res => res.json()).then(json => {
+    fetch(`http://${env}:3000/api/v1/employee/${req.params.id}`).then(res => res.json()).then(json => {
         //  console.log(json);
         //  res.send(json);
         res.render('employee', { data: json });
@@ -53,7 +53,7 @@ router.post('/employee', urlEncodedParser, jsonParser, function (req, res) {
         'reportTo':req.body.reportTo,
         'jobTitle':req.body.jobTitle,
     };
-    fetch(`http://${env}:5000/api/v1/employee`, {
+    fetch(`http://${env}:3000/api/v1/employee`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
@@ -79,7 +79,7 @@ router.post('/employeeUpdate', urlEncodedParser, jsonParser, function (req, res)
         'jobTitle':req.body.jobTitle,
     };
     console.log('entered update api');
-    fetch(`http://${env}:5000/api/v1/employee`, {
+    fetch(`http://${env}:3000/api/v1/employee`, {
         method: 'PUT',
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
@@ -97,8 +97,8 @@ router.get('/employeeDelete', function (req, res) {
     console.log('entered in the delete api');
     console.log(req.query);
     if(req.query && req.query.emp_id){
-        console.log(`http://${env}:5000/api/v1/employee/${req.query.emp_id}`);
-    fetch(`http://${env}:5000/api/v1/employee/`+req.query.emp_id, {
+        console.log(`http://${env}:3000/api/v1/employee/${req.query.emp_id}`);
+    fetch(`http://${env}:3000/api/v1/employee/`+req.query.emp_id, {
         method: 'DELETE'
     }).then(response => {
         if(response.status == 200){
@@ -121,7 +121,7 @@ router.post('/employeePatch',urlEncodedParser, jsonParser, function (req, res) {
         'reportTo':req.body.reportTo,
         'jobTitle':req.body.jobTitle 
     };
-    fetch(`http://${env}:5000/api/v1/employee`, {
+    fetch(`http://${env}:3000/api/v1/employee`, {
         method: 'PATCH',
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' }
